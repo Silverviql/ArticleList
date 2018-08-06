@@ -1,8 +1,16 @@
 import React, { PureComponent } from 'react';
 import Button from '@material-ui/core/Button';
 import CommentList from './CommentList'
+import PropTypes from 'prop-types';
 
 class Article extends PureComponent {
+    static propTypes = {
+        article: PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired,
+            text: PropTypes.string
+        }).isRequired
+    }
     constructor(props) {
         super(props)
 
@@ -38,9 +46,9 @@ class Article extends PureComponent {
             </div>
         );
     }
-    handleClick = openCommentId => this.setState({
-        openCommentId:this.state.openCommentId === openCommentId ? null : openCommentId
-    })
+        handleClick = openCommentId => this.setState({
+            openCommentId:this.state.openCommentId === openCommentId ? null : openCommentId
+        })
 }
 
 

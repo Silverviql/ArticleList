@@ -4,6 +4,9 @@ import './style.css'
 import Button from '@material-ui/core/Button';
 
 export default class CommentList extends PureComponent {
+    static defaultProps = {
+        comments: []
+    }
     constructor(props) {
         super(props)
 
@@ -12,8 +15,8 @@ export default class CommentList extends PureComponent {
     }
     render(){
         const {comments, isComment, onCommentClick} = this.props;
-        if ( !comments ) {
-            return null;
+        if ( !comments.length ) {
+            return <p>Нет комментариев</p>;
         }
 
         const commentElements = comments.map((comment, index) =>

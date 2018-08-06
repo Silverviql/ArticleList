@@ -3,9 +3,6 @@ import articles from  '../fixtures';
 import 'bootstrap/dist/css/bootstrap.css';
 import ArticleList from './ArticleList';
 
-
-
-
 class Hello extends PureComponent {
     constructor(props) {
         super(props)
