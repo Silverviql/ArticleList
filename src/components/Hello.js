@@ -1,10 +1,12 @@
 import React, { PureComponent } from 'react';
-import ArticleList from './ArticleList';
 import articles from  '../fixtures';
 import 'bootstrap/dist/css/bootstrap.css';
+import ArticleList from './ArticleList';
 
 
-class HelloWorld extends PureComponent {
+
+
+class Hello extends PureComponent {
     constructor(props) {
         super(props)
         this.state = {
@@ -37,4 +39,4 @@ function revert(){
     })
 }
 
-export default HelloWorld;
+export default Hello;

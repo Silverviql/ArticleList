@@ -1,39 +1,21 @@
-import React, { Component, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import Button from '@material-ui/core/Button';
+import CommentList from './CommentList'
 
 class Article extends PureComponent {
     constructor(props) {
         super(props)
 
         this.state = {
-            /*isOpen: props.defaultOpen*/
+            openCommentId: null
         }
-        this.handleClick = handleClick.bind(this)
     }
 
-    /*shouldComponentUpdate(nextProps,nextState){
-        return this.state.isOpen !== nextState.isOpen
-    }*/
-
-    componentWillMount(){
-        console.log('---', 'mounting')
-    }
-
-    /*componentWillReceiveProps(nextProps){
-        /!*console.log('---', 'will receive props')*!/
-        if(nextProps.defaultOpen !== this.props.defaultOpen) this.setState({
-            isOpen: nextProps.defaultOpen
-        })
-    }*/
-
-    componentWillUpdate(){
-        console.log('---', 'will update')
-    }
 
     render() {
-        const {article, isOpen, onButtonClick} = this.props
-       /* console.log('---',this.props)*/
+        const {article, isOpen, onButtonClick } = this.props
         const body = isOpen && <section className='card-text'>{article.text}</section>
+        const {comments} = article
         return (
             <div className='card mx-auto col-lg-6'>
                 <div className='card-header'>
@@ -45,20 +27,21 @@ class Article extends PureComponent {
                     </h2>
                 </div>
                 <div className='card-body'>
-                {body}
-                <h6 className='float-right  text-muted'>creation date: {(new Date(article.date)).toDateString()}</h6>
-            </div>
+                      {body}
+                       <h6 className='float-right  text-muted'>creation date: {(new Date(article.date)).toDateString()}</h6>
+                 </div>
+                <CommentList
+                    comments={comments}
+                    isComment = {this.state.openCommentId === article.id}
+                    onCommentClick={this.handleClick.bind(this, article.id)}
+                />
             </div>
         );
     }
+    handleClick = openCommentId => this.setState({
+        openCommentId:this.state.openCommentId === openCommentId ? null : openCommentId
+    })
 }
 
-function handleClick(){
-
-    /*console.log('---','clicked')*/
-    /*this.setState({
-        isOpen: !this.state.isOpen
-    })*/
-}
 
 export default Article;

@@ -8,6 +8,7 @@ export default class ArticleList extends PureComponent {
 
         this.state = {
            openArticleId: null
+
         }
 
     }
