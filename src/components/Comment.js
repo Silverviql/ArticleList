@@ -7,10 +7,10 @@ export default function Comment(props) {
         <h4>{props.user}</h4>
         <div>{props.text}</div>
     </div>);
-Comment.PropTypes = {
+}
+Comment.propTypes = {
     props: PropTypes.shape({
         user:PropTypes.string.isRequired,
         text:PropTypes.string.isRequired
-        })
-}
+    })
 }

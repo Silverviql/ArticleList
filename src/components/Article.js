@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import CommentList from './CommentList'
-import PropTypes from 'prop-types';
+import toogleOpen from '../decorators/toogleOpen';
 
 class Article extends PureComponent {
     static propTypes = {
@@ -11,17 +12,11 @@ class Article extends PureComponent {
             text: PropTypes.string
         }).isRequired
     }
-    constructor(props) {
-        super(props)
 
-        this.state = {
-            openCommentId: null
-        }
-    }
 
 
     render() {
-        const {article, isOpen, onButtonClick } = this.props
+        const {article, isOpen, onButtonClick, openArticleId, toogleOpen } = this.props
         const body = isOpen && <section className='card-text'>{article.text}</section>
         const {comments} = article
         return (
@@ -40,16 +35,14 @@ class Article extends PureComponent {
                  </div>
                 <CommentList
                     comments={comments}
-                    isComment = {this.state.openCommentId === article.id}
-                    onCommentClick={this.handleClick.bind(this, article.id)}
+                    isComment = {openArticleId === article.id}
+                    onCommentClick={toogleOpen.bind(this, article.id)}
                 />
             </div>
         );
     }
-        handleClick = openCommentId => this.setState({
-            openCommentId:this.state.openCommentId === openCommentId ? null : openCommentId
-        })
+
 }
 
 
-export default Article;
+export default toogleOpen(Article);

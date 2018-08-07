@@ -1,23 +1,17 @@
 import React, {PureComponent} from 'react';
 import Article from '../Article';
+import toogleOpen from '../../decorators/toogleOpen';
 import './style.css'
 
-export default class ArticleList extends PureComponent {
-    constructor(props) {
-        super(props)
+class ArticleList extends PureComponent {
 
-        this.state = {
-           openArticleId: null
-
-        }
-
-    }
     render(){
-        const articleElements = this.props.articles.map((article, index) =>
+        const { openArticleId, toogleOpen, articles } = this.props
+        const articleElements = articles.map((article, index) =>
             <li key={article.id} className='article-list_li' >
                 <Article article = {article}
-                         isOpen = {this.state.openArticleId === article.id}
-                         onButtonClick={this.handleClick.bind(this, article.id)}
+                         isOpen = {openArticleId === article.id}
+                         onButtonClick={toogleOpen.bind(this, article.id)}
                 />
             </li>)
         return(
@@ -27,8 +21,5 @@ export default class ArticleList extends PureComponent {
         )
     }
 
-    handleClick = openArticleId => this.setState({
-            openArticleId:this.state.openArticleId === openArticleId ? null : openArticleId
-    })
-    
 }
+export default toogleOpen(ArticleList);

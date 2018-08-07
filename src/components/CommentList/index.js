@@ -28,7 +28,6 @@ export default class CommentList extends PureComponent {
             </li>)
         const lol = isComment && <section className='card-text'>{commentElements}</section>
 
-
         return(
             <div>
                 <h6>
