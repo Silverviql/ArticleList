@@ -4,14 +4,14 @@ export default (OriginalComponent) =>class WrapperComponent extends ReactCompone
 
     state = {
         isOpen: false
-    }
+    };
 
     render() {
         return <OriginalComponent {...this.props} isOpen={this.state.isOpen} toogleOpen={this.toogleOpen}/>
     }
 
     toogleOpen = (ev) => {
-        ev && ev.preventDefault && ev.preventDefault()
+        ev && ev.preventDefault && ev.preventDefault();
         this.setState({
             isOpen: !this.state.isOpen
         })

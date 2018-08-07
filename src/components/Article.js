@@ -9,15 +9,16 @@ class Article extends PureComponent {
             id: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
             text: PropTypes.string
-        }).isRequired
-    }
-
-
+        }).isRequired,
+            isOpen: PropTypes.bool,
+            openArticleId: PropTypes.string,
+            toogleOpen: PropTypes.func
+    };
 
     render() {
-        const {article, isOpen,openArticleId, toogleOpen } = this.props
-        const body = isOpen && <section className='card-text'>{article.text}</section>
-        const {comments} = article
+        const {article, isOpen,openArticleId, toogleOpen } = this.props;
+        const body = isOpen && <section className='card-text'>{article.text}</section>;
+        const {comments} = article;
         return (
             <div className='card mx-auto col-lg-6'>
                 <div className='card-header'>

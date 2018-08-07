@@ -5,10 +5,10 @@ import ArticleList from './ArticleList';
 
 class Hello extends PureComponent {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             revenrted: false
-        }
+        };
         this.revert = revert.bind(this)
     }
     render() {

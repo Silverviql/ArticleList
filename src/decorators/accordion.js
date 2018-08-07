@@ -4,7 +4,7 @@ export default (AccordionComponent) =>class Accordion extends ReactComponent{
 
        state = {
             openArticleId: null
-        }
+        };
 
     render(){
         return <AccordionComponent {...this.props} openArticleId = {this.state.openArticleId} toogleOpenItem = {this.toogleOpenItem}/>
