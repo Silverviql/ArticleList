@@ -2,8 +2,9 @@ import React, {PureComponent} from 'react';
 import Comment from '../Comment';
 import './style.css'
 import Button from '@material-ui/core/Button';
+import toogleOpen from "../../decorators/toogleOpen";
 
-export default class CommentList extends PureComponent {
+ class CommentList extends PureComponent {
     static defaultProps = {
         comments: []
     }
@@ -14,7 +15,7 @@ export default class CommentList extends PureComponent {
         }
     }
     render(){
-        const {comments, isComment, onCommentClick} = this.props;
+        const {comments, isOpen, toogleOpen} = this.props;
         if ( !comments.length ) {
             return <p>Нет комментариев</p>;
         }
@@ -26,15 +27,15 @@ export default class CommentList extends PureComponent {
                     text = {comment.text}
                 />
             </li>)
-        const lol = isComment && <section className='card-text'>{commentElements}</section>
+        const lol = isOpen && <section className='card-text'>{commentElements}</section>
 
         return(
             <div>
                 <h6>
                     {'Комментарии'}
                 </h6>
-                <Button  className='float-right' variant="contained" color="secondary" onClick={onCommentClick}>
-                    {isComment ? 'Закрыть' : "Открыть"}
+                <Button  className='float-right' variant="contained" color="secondary" onClick={toogleOpen}>
+                    {isOpen ? 'Закрыть' : "Открыть"}
                 </Button>
                 <ul>
                     {lol}
@@ -46,3 +47,5 @@ export default class CommentList extends PureComponent {
 
 
 }
+
+export default toogleOpen(CommentList);

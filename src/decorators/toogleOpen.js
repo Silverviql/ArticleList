@@ -1,16 +1,19 @@
 import React, {Component as ReactComponent} from 'react';
 
-export default (OriginalComponent) =>class WrapperComponent extends ReactComponent{
+export default (OriginalComponent) =>class WrapperComponent extends ReactComponent {
 
-       state = {
-            openArticleId: null
-        }
-
-    render(){
-        return <OriginalComponent {...this.props} openArticleId = {this.state.openArticleId} toogleOpen = {this.toogleOpen}/>
+    state = {
+        isOpen: false
     }
 
-    toogleOpen = openArticleId => this.setState({
-        openArticleId:this.state.openArticleId === openArticleId ? null : openArticleId
-    })
+    render() {
+        return <OriginalComponent {...this.props} isOpen={this.state.isOpen} toogleOpen={this.toogleOpen}/>
+    }
+
+    toogleOpen = (ev) => {
+        ev && ev.preventDefault && ev.preventDefault()
+        this.setState({
+            isOpen: !this.state.isOpen
+        })
+    }
 }

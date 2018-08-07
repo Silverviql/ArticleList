@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import CommentList from './CommentList'
-import toogleOpen from '../decorators/toogleOpen';
 
 class Article extends PureComponent {
     static propTypes = {
@@ -16,7 +15,7 @@ class Article extends PureComponent {
 
 
     render() {
-        const {article, isOpen, onButtonClick, openArticleId, toogleOpen } = this.props
+        const {article, isOpen,openArticleId, toogleOpen } = this.props
         const body = isOpen && <section className='card-text'>{article.text}</section>
         const {comments} = article
         return (
@@ -24,7 +23,7 @@ class Article extends PureComponent {
                 <div className='card-header'>
                     <h2>
                         {article.title}
-                        <Button  className='float-right' variant="contained" color="primary" onClick={onButtonClick}>
+                        <Button  className='float-right' variant="contained" color="primary" onClick={toogleOpen}>
                             {isOpen ? 'close' : "open"}
                             </Button>
                     </h2>
@@ -33,11 +32,10 @@ class Article extends PureComponent {
                       {body}
                        <h6 className='float-right  text-muted'>creation date: {(new Date(article.date)).toDateString()}</h6>
                  </div>
-                <CommentList
+               {<CommentList
                     comments={comments}
-                    isComment = {openArticleId === article.id}
-                    onCommentClick={toogleOpen.bind(this, article.id)}
-                />
+                    isOpen = {openArticleId === article.id}
+                />}
             </div>
         );
     }
@@ -45,4 +43,4 @@ class Article extends PureComponent {
 }
 
 
-export default toogleOpen(Article);
+export default Article;
