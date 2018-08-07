@@ -27,7 +27,7 @@ import toogleOpen from "../../decorators/toogleOpen";
                     text = {comment.text}
                 />
             </li>)
-        const lol = isOpen && <section className='card-text'>{commentElements}</section>
+        const commentArticle = isOpen && <section className='card-text'>{commentElements}</section>
 
         return(
             <div>
@@ -38,7 +38,7 @@ import toogleOpen from "../../decorators/toogleOpen";
                     {isOpen ? 'Закрыть' : "Открыть"}
                 </Button>
                 <ul>
-                    {lol}
+                    {commentArticle}
                 </ul>
             </div>
         )
