@@ -15,13 +15,20 @@ class Article extends PureComponent {
             toogleOpen: PropTypes.func
     };
 
+    componentWillReceiveProps(nextProps){
+        console.log('---', 'updating', this.props.isOpen, nextProps.isOpen)
+    }
+    componentWillMount(){
+        console.log('---', 'mouting')
+    }
+
     render() {
         const {article, isOpen,openArticleId, toogleOpen } = this.props;
         const body = isOpen && <section className='card-text'>{article.text}</section>;
         const {comments} = article;
         return (
-            <div className='card mx-auto col-lg-6'>
-                <div className='card-header'>
+            <div className='card mx-auto col-lg-6' ref = {this.setContainerRef}>
+                <div className='card-header' >
                     <h2>
                         {article.title}
                         <Button  className='float-right' variant="contained" color="primary" onClick={toogleOpen}>
@@ -39,6 +46,14 @@ class Article extends PureComponent {
                 />}
             </div>
         );
+    }
+    componentDidMount(){
+        console.log('---', 'moutend')
+    }
+
+    setContainerRef = ref =>{
+        this.container = ref
+        console.log('---', ref)
     }
 
 }

@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import articles from  '../fixtures';
 import 'bootstrap/dist/css/bootstrap.css';
 import ArticleList from './ArticleList';
+import ArticleChart from "./ArticleChart";
 
 class Hello extends PureComponent {
     constructor(props) {
@@ -21,7 +22,8 @@ class Hello extends PureComponent {
                         </h1>
                     </div>
                     <div className='col-lg-12'>
-                    <ArticleList  articles={this.state.revenrted ? articles.slice().reverse() :articles}/>
+                        <ArticleList  articles={this.state.revenrted ? articles.slice().reverse() :articles}/>
+                        <ArticleChart articles={this.props.article}/>
                     </div>
                 </div>
 
