@@ -1,9 +1,9 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import CommentList from './CommentList'
 
-class Article extends PureComponent {
+class Article extends Component {
     static propTypes = {
         article: PropTypes.shape({
             id: PropTypes.string.isRequired,
@@ -14,18 +14,25 @@ class Article extends PureComponent {
             openArticleId: PropTypes.string,
             toogleOpen: PropTypes.func
     };
+    state = {
+        updateIndex: 0
+    };
 
-    componentWillReceiveProps(nextProps){
+    /*shouldComponentUpdate(nextProps,nextState){
+        return nextProps.isOpen !== this.props.isOpen
+    }*/
+   /* componentWillReceiveProps(nextProps){
         console.log('---', 'updating', this.props.isOpen, nextProps.isOpen)
     }
     componentWillMount(){
         console.log('---', 'mouting')
-    }
+    }*/
 
     render() {
         const {article, isOpen,openArticleId, toogleOpen } = this.props;
         const body = isOpen && <section className='card-text'>{article.text}</section>;
         const {comments} = article;
+        console.log('---','update article');
         return (
             <div className='card mx-auto col-lg-6' ref = {this.setContainerRef}>
                 <div className='card-header' >
@@ -40,21 +47,30 @@ class Article extends PureComponent {
                       {body}
                        <h6 className='float-right  text-muted'>creation date: {(new Date(article.date)).toDateString()}</h6>
                  </div>
+                { <Button  className='float-right' variant="contained" color="primary"
+                           onClick={() => this.setState({updateIndex: this.state.updateIndex + 1})}>Update
+                </Button>}
                {<CommentList
                     comments={comments}
                     isOpen = {openArticleId === article.id}
-                />}
+                    ref = {this.setCommentsRef} key = {this.state.updateIndex}
+               />}
+
             </div>
         );
     }
-    componentDidMount(){
-        console.log('---', 'moutend')
-    }
-
     setContainerRef = ref =>{
         this.container = ref
-        console.log('---', ref)
+        //console.log('---', ref)
+    };
+   /* componentDidMount(){
+        console.log('---', 'moutend')
+    }*/
+
+    setCommentsRef = ref =>{
+      //  console.log('---', ref)
     }
+
 
 }
 
