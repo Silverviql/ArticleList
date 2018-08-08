@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import CommentList from './CommentList'
 
-class Article extends Component {
+class Article extends PureComponent {
     static propTypes = {
         article: PropTypes.shape({
             id: PropTypes.string.isRequired,
@@ -21,18 +21,11 @@ class Article extends Component {
     /*shouldComponentUpdate(nextProps,nextState){
         return nextProps.isOpen !== this.props.isOpen
     }*/
-   /* componentWillReceiveProps(nextProps){
-        console.log('---', 'updating', this.props.isOpen, nextProps.isOpen)
-    }
-    componentWillMount(){
-        console.log('---', 'mouting')
-    }*/
 
     render() {
         const {article, isOpen,openArticleId, toogleOpen } = this.props;
         const body = isOpen && <section className='card-text'>{article.text}</section>;
         const {comments} = article;
-        console.log('---','update article');
         return (
             <div className='card mx-auto col-lg-6' ref = {this.setContainerRef}>
                 <div className='card-header' >
@@ -63,16 +56,10 @@ class Article extends Component {
         this.container = ref
         //console.log('---', ref)
     };
-   /* componentDidMount(){
-        console.log('---', 'moutend')
-    }*/
 
     setCommentsRef = ref =>{
       //  console.log('---', ref)
     }
-
-
 }
-
 
 export default Article;

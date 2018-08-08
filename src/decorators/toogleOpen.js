@@ -6,17 +6,6 @@ export default (OriginalComponent) =>class WrapperComponent extends ReactCompone
         isOpen: false
     };
 
-   /* componentDidMount(){
-        console.log('---', 'mounting')
-    }
-
-    componentDidUpdate(){
-        console.log('---', 'updating')
-    }
-
-    componentWillUnmount(){
-        console.log('---', 'unmouting')
-    }*/
     render() {
         return <OriginalComponent {...this.props} isOpen={this.state.isOpen} toogleOpen={this.toogleOpen} ref ={this.getRef}/>
     }
