@@ -14,7 +14,7 @@ class ArticleList extends PureComponent {
 
     render(){
         const { articles, openArticleId, toogleOpenItem } = this.props;
-        const articleElements = articles.map((article) =>
+        const articleElements = articles.map(article =>
             <li key={article.id} className='article-list_li' >
                 <Article article = {article}
                          isOpen = {openArticleId === article.id}

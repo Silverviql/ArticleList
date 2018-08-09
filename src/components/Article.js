@@ -59,7 +59,7 @@ class Article extends PureComponent {
 
     setCommentsRef = ref =>{
       //  console.log('---', ref)
-    }
+    };
 }
 
 export default Article;
