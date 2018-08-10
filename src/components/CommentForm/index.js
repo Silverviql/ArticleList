@@ -36,7 +36,7 @@ class CommentForm extends Component {
         //Отследивает количество введеных символов если меньше то вызывает валидацию
     getClassName = type => this.state[type].length && this.state[type].length < limits[type].min ? 'form-input_error': ''
 
-        //Проверяет условие при изменение состояния,если количество сивмолов больше то вызывает валидаци. если нет то меняет состояние
+        //Проверяет условие при изменение состояния,если количество сивмолов больше то не дает писать дальше. если нет то меняет состояние
     hundleChange = type => ev => {
         const {value} = ev.target
         if (value.length > limits[type].max) return
