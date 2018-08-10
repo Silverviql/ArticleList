@@ -3,12 +3,11 @@ import articles from  '../fixtures';
 import 'bootstrap/dist/css/bootstrap.css';
 import ArticleList from './ArticleList';
 import ArticleChart from "./ArticleChart";
-import UserForm from './UserForm';
 import Select from 'react-select';
 
 /*const options = articles.map(article => (
     {value: article.title, lable: article.id}
-));*/
+));*/ // почему то с массивом не рабоает. значение в консоле есть, в селект не приходят.
 const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -28,7 +27,6 @@ class Hello extends PureComponent {
         const { selectedOption } = this.state;
         return (
             <div className='container'>
-                <UserForm/>
                 <Select options = {options} value={selectedOption} onChange={this.handleChange} isMulti/>
                 <div className='row'>
                     <div className='col-lg-12 jumbotron'>

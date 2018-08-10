@@ -4,6 +4,7 @@ import './style.css';
 import Button from '@material-ui/core/Button';
 import toogleOpen from "../../decorators/toogleOpen";
 import PropTypes from "prop-types";
+import CommentForm from "../CommentForm";
 
  class CommentList extends PureComponent {
     static defaultProps = {
@@ -41,6 +42,7 @@ import PropTypes from "prop-types";
                 <ul>
                     {commentArticle}
                 </ul>
+                <CommentForm/>
             </div>
         )
     }
