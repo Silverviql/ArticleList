@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import CommentList from './CommentList';
-
+import {connect} from "react-redux"
+import {deleteArticle} from '../AC'
 
 class Article extends PureComponent {
     static propTypes = {
@@ -36,12 +37,13 @@ class Article extends PureComponent {
                         <Button  className='float-right' variant="contained" color="primary" onClick={toogleOpen}>
                             {isOpen ? 'close' : "open"}
                             </Button>
+                        <button onClick={this.hundleDelete}>
+                            delete me
+                        </button>
                     </h2>
                 </div>
                 <div className='card-body'>
-
                       {body}
-
                        <h6 className='float-right  text-muted'>creation date: {(new Date(article.date)).toDateString()}</h6>
                  </div>
 
@@ -67,6 +69,12 @@ class Article extends PureComponent {
     setCommentsRef = ref =>{
       //  console.log('---', ref)
     };
+
+    hundleDelete = () => {
+        const {deleteArticle, article}= this.props
+        deleteArticle(article.id)
+        console.log('---', 'delete article')
+    }
 }
 
-export default Article;
+export default connect(null,{deleteArticle})(Article);

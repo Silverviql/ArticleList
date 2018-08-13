@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import articles from  '../fixtures';
 import 'bootstrap/dist/css/bootstrap.css';
 import ArticleList from './ArticleList';
 import ArticleChart from "./ArticleChart";
@@ -27,9 +26,10 @@ class Hello extends PureComponent {
                     <div className='col-lg-12'>
                         <Counter/>
                         <UserForm/>
-                        <Filters articles={articles}/>
-                        <ArticleList  articles={this.state.revenrted ? articles.slice().reverse() :articles}/>
-                        <ArticleChart articles={this.props.article}/>
+                        <Filters articles={[]}/>
+                        <ArticleList />
+                        {/*<ArticleList  articles={this.state.revenrted ? articles.slice().reverse() :articles}/>*/}
+                        {/*<ArticleChart articles={this.props.article}/>*/}
                     </div>
                 </div>
             </div>

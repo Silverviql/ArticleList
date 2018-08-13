@@ -9,12 +9,6 @@ import store from './store';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
-ReactDOM.render(
-    <div>
-        <Root name={"Polya"} action={"Eat"} />
-    </div>,
-    document.getElementById('content')
-    );
-
+ReactDOM.render(<div><Root name={"Polya"} action={"Eat"} /></div>, document.getElementById('content'));
 
 registerServiceWorker();

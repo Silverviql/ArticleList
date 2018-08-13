@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import Article from '../Article';
 import accordion from '../../decorators/accordion';
 import './style.css'
+import {connect} from 'react-redux'
 
 class ArticleList extends PureComponent {
     static propTypes = {
+        //from connect
         articles: PropTypes.array.isRequired,
         //from accordion
         openArticleId: PropTypes.string,
@@ -28,4 +30,6 @@ class ArticleList extends PureComponent {
         )
     }
 }
-export default accordion(ArticleList);
+export default connect(state => ({
+    articles: state.articles
+}))(accordion(ArticleList));
