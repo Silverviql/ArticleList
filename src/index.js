@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App';
-import Hello from './components/Hello';
+import Root from './components/Root';
+import store from './store';
 
 
 import registerServiceWorker from './registerServiceWorker';
@@ -10,7 +11,7 @@ import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(
     <div>
-        <Hello name={"Polya"} action={"Eat"} />
+        <Root name={"Polya"} action={"Eat"} />
     </div>,
     document.getElementById('content')
     );

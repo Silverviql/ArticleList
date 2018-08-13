@@ -5,6 +5,7 @@ import ArticleList from './ArticleList';
 import ArticleChart from "./ArticleChart";
 import Filters from "./Filters";
 import UserForm from "./UserForm";
+import Counter from "./Counter";
 
 
 class Hello extends PureComponent {
@@ -24,6 +25,7 @@ class Hello extends PureComponent {
                         </h1>
                     </div>
                     <div className='col-lg-12'>
+                        <Counter/>
                         <UserForm/>
                         <Filters articles={articles}/>
                         <ArticleList  articles={this.state.revenrted ? articles.slice().reverse() :articles}/>

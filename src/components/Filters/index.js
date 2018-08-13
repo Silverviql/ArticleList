@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import DataRange from "./DataRange";
-import Select from "./Select";
+import SelectFilter from "./SelectFilter";
 
 class Filters extends Component {
     static defaultProps = {};
@@ -13,7 +13,7 @@ class Filters extends Component {
     render() {
         return (
             <div>
-                <Select/>
+                <SelectFilter/>
                 <DataRange/>
             </div>
         );

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import Selecttion from 'react-select';
+import Select from 'react-select';
 
 /*const options = articles.map(article => (
     {value: article.title, lable: article.id}
@@ -11,7 +11,7 @@ const options = [
     { value: 'vanilla', label: 'Vanilla' }
 ];
 
-class Select extends Component {
+class SelectFilter extends Component {
     static defaultProps = {};
 
     static propTypes = {};
@@ -22,7 +22,7 @@ class Select extends Component {
         const { selectedOption } = this.state;
         return (
             <div>
-                <Selecttion options = {options} value={selectedOption} onChange={this.handleChange} isMulti/>
+                <Select options = {options} value={selectedOption} onChange={this.handleChange} isMulti/>
             </div>
         );
     }
@@ -32,4 +32,4 @@ handleChange = (selectedOption) => {
 }
 }
 
-export default Select;
+export default SelectFilter;
