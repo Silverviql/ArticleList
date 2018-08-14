@@ -6,7 +6,9 @@ import SelectFilter from "./SelectFilter";
 class Filters extends Component {
     static defaultProps = {};
 
-    static propTypes = {};
+    static propTypes = {
+        articles:PropTypes.array
+    };
 
     state = {};
 

@@ -1,35 +1,39 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
+import { connect } from 'react-redux'
+import { changeSelection } from '../../AC'
 
-/*const options = articles.map(article => (
-    {value: article.title, lable: article.id}
-));*/ // почему то с массивом не рабоает. значение в консоле есть, в селект не приходят.
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-];
+
 
 class SelectFilter extends Component {
-    static defaultProps = {};
+    static propTypes = {
+        articles: PropTypes.array.isRequired
+    };
 
-    static propTypes = {};
-
-    state = { selectedOption: null};
+    handleChange = selected => this.props.changeSelection(selected.map(option => option.value))
 
     render() {
-        const { selectedOption } = this.state;
+        const { articles, selected } = this.props
+        const options = articles.map(article => ({
+            label: article.title,
+            value: article.id
+        }))
         return (
             <div>
-                <Select options = {options} value={selectedOption} onChange={this.handleChange} isMulti/>
+                <Select
+                    options={options}
+                    value={selected}
+                    multi={true}
+                    onChange={this.handleChange}
+                />
             </div>
         );
     }
-handleChange = (selectedOption) => {
-    this.setState({ selectedOption });
-    console.log(`Option selected:`, selectedOption);
-}
+
 }
 
-export default SelectFilter;
+export default connect(state => ({
+    selected: state.filters.selected,
+    articles: state.articles
+}), { changeSelection })(SelectFilter)
