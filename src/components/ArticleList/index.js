@@ -4,6 +4,7 @@ import Article from '../Article';
 import accordion from '../../decorators/accordion';
 import './style.css'
 import {connect} from 'react-redux'
+import {filtratedArticlesSelector} from "../../selectors";
 
 class ArticleList extends PureComponent {
     static propTypes = {
@@ -23,6 +24,7 @@ class ArticleList extends PureComponent {
                          toogleOpen={toogleOpenItem.bind(this, article.id)}
                 />
             </li>);
+        console.log('---', ' update article')
         return(
             <ul>
                 {articleElements}
@@ -30,6 +32,8 @@ class ArticleList extends PureComponent {
         )
     }
 }
-export default connect(state => ({
-    articles: state.articles
-}))(accordion(ArticleList));
+export default connect((state) => {
+    return {
+        articles: filtratedArticlesSelector(state)
+    }
+})(accordion(ArticleList))

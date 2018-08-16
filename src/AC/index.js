@@ -21,7 +21,7 @@ export function changeDateRange(dateRange) {
 }
 
 export function changeSelection(selected) {
-    return{
+    return {
         type: CHANGE_SELECTION,
         payload: { selected }
     }

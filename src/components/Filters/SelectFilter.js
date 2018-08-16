@@ -11,23 +11,23 @@ class SelectFilter extends Component {
         articles: PropTypes.array.isRequired
     };
 
-    handleChange = selected => this.props.changeSelection(selected.map(option => option.value))
+    handleChange = selected => this.props.changeSelection(selected.map(options =>options))
 
     render() {
         const { articles, selected } = this.props
         const options = articles.map(article => ({
-            label: article.title,
-            value: article.id
+            value: article.id,
+            label: article.title
         }))
+        console.log(articles)
+        console.log(selected)
         return (
-            <div>
                 <Select
                     options={options}
                     value={selected}
-                    multi={true}
+                    isMulti
                     onChange={this.handleChange}
                 />
-            </div>
         );
     }
 
