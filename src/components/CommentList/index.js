@@ -23,11 +23,10 @@ import CommentForm from "../CommentForm";
             return <p>Нет комментариев</p>;
         }
 
-        const commentElements = comments.map((comment) =>
-            <li key={comment.id} className='article-list_li' >
+        const commentElements = comments.map((id) =>
+            <li key={id} className='article-list_li' >
                 <Comment
-                    user = {comment.user}
-                    text = {comment.text}
+                    id = {id}
                 />
             </li>);
         const commentArticle = isOpen && <section className='card-text'>{commentElements}</section>;
