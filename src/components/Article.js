@@ -13,7 +13,6 @@ class Article extends PureComponent {
             text: PropTypes.string
         }).isRequired,
             isOpen: PropTypes.bool,
-            openArticleId: PropTypes.string,
             toogleOpen: PropTypes.func
     };
     state = {
@@ -25,11 +24,8 @@ class Article extends PureComponent {
     }*/
 
     render() {
-        const {article, isOpen,openArticleId, toogleOpen } = this.props;
-        const body = isOpen && <section className='card-text'>{article.text}</section>;
-        const {comments} = article;
+        const {article, isOpen, toogleOpen } = this.props;
         return (
-
             <div className='card mx-auto col-lg-6' ref = {this.setContainerRef}>
                 <div className='card-header' >
                     <h2>
@@ -43,23 +39,31 @@ class Article extends PureComponent {
                     </h2>
                 </div>
                 <div className='card-body'>
-                      {body}
+                    {this.getBody()}
                        <h6 className='float-right  text-muted'>creation date: {(new Date(article.date)).toDateString()}</h6>
                  </div>
 
-
-    { <Button  className='float-right' variant="contained" color="primary"
-                           onClick={() => this.setState({updateIndex: this.state.updateIndex + 1})}>Update
-                </Button>}
-
-               {<CommentList
-                    comments={comments}
-                    isOpen = {openArticleId === article.id}
-                    ref = {this.setCommentsRef} key = {this.state.updateIndex}
-               />}
             </div>
 
         );
+    }
+
+    getBody() {
+        const {article, isOpen} = this.props
+        if (!isOpen) return null
+        return (
+            <section className='card-text'>
+                {article.text}
+                <Button  className='float-right' variant="contained" color="primary"
+                         onClick={() => this.setState({updateIndex: this.state.updateIndex + 1})}>Update
+                </Button>
+                <CommentList
+                    article={article}
+                    ref = {this.setCommentsRef}
+                    key = {this.state.updateIndex}
+                />
+            </section>
+        )
     }
     setContainerRef = ref =>{
         this.container = ref

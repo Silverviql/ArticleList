@@ -2,8 +2,12 @@ import React from "react";
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import {commentSelectorFactory} from '../selectors'
-function Comment({comment}) {
 
+
+
+function Comment({comment}) {
+   /* console.log(comment.id)*/
+    console.log(comment)
     return (<div>
         <h4>{comment.user}</h4>
         <div>{comment.text}</div>
