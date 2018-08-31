@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
-import ArticleList from './ArticleList';
-import Filters from "./Filters";
+import ArticleList from './ArticleList/index';
+import Filters from "./Filters/index";
 import UserForm from "./UserForm";
 import Counter from "./Counter";
 

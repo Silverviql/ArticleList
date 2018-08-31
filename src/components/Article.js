@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import CommentList from './CommentList';
+import CommentList from './CommentList/index';
 import {connect} from "react-redux"
-import {deleteArticle} from '../AC'
+import {deleteArticle} from '../AC/index'
 
 class Article extends PureComponent {
     static propTypes = {

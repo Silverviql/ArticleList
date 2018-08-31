@@ -1,5 +1,5 @@
 import {createStore, applyMiddleware} from 'redux'
-import reduser from '../reducer'
+import reduser from '../reducer/index'
 import logger from '../middlewars/logger'
 import randomId from '../middlewars/randomId'
 

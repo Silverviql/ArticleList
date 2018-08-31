@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {} from '../AC'
-import {increment} from "../AC";
+import {} from '../AC/index'
+import {increment} from "../AC/index";
 
 class Counter extends Component {
     static defaultProps = {};

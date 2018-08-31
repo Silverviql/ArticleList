@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import { connect } from 'react-redux'
-import { changeSelection } from '../../AC'
+import { changeSelection } from '../../AC/index'
 import {mapToArr} from '../../helpers'
 
 
